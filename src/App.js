@@ -9,9 +9,11 @@ function App() {
         "#a41313",
         "#064826"
     ];
+
     const [number, setNumber] = React.useState(0);
     const [boxes, setBoxes] = React.useState([]);
-    const [color, setColor] = React.useState(randomColor[Math.floor(Math.random() * (5))]);
+    const [color, setColor] = React.useState('red');
+    const [change, setChange] = React.useState(false);
 
     let getColor = () => {
         if (number % 5 === 0) {
@@ -30,6 +32,7 @@ function App() {
         }
     }, [number]);
 
+
     let box = boxes.map((it, idx) =>
         <Box key={idx} color={it.color} number={it.number}/>
     );
@@ -37,6 +40,7 @@ function App() {
     let reset = () => {
         setNumber(0);
         setBoxes([]);
+        setChange(true);
     };
 
     return (

@@ -1,8 +1,5 @@
 import React from "react";
 
-//any other imports
-
-
 function Box(props){
 
     let style = {

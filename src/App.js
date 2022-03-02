@@ -15,42 +15,42 @@ function App() {
     const [color, setColor] = React.useState('red');
     const [change, setChange] = React.useState(false);
 
+    let box = boxes.map((it, idx) =>
+        <Box key={idx} color={it.color} number={it.number}/>
+    );
+
     let getColor = () => {
-        if (number % 5 === 0) {
-            let rand = Math.floor(Math.random() * (5));
+        if (boxes.length % 5 === 0) {
+            let rand = Math.floor(Math.random() * randomColor.length);
             setColor(randomColor[rand]);
             return randomColor[rand];
         }
         return color;
     };
 
-    React.useEffect(() => {
-        if (number % 2 === 0) {
-            let newBoxList = [...boxes];
-            newBoxList.push({color: getColor()});
-            setBoxes(newBoxList);
-        }
-    }, [number]);
+        React.useEffect(() => {
+            if (number % 2 === 0) {
+                let newBoxList = [...boxes];
+                newBoxList.push({color: getColor()});
+                setBoxes(newBoxList);
+            }
+        }, [number]);
 
 
-    let box = boxes.map((it, idx) =>
-        <Box key={idx} color={it.color} number={it.number}/>
-    );
+        let reset = () => {
+            setNumber(0);
+            setBoxes([]);
+            setChange(true);
+        };
 
-    let reset = () => {
-        setNumber(0);
-        setBoxes([]);
-        setChange(true);
-    };
-
-    return (
-        <div className="App">
-            <button onClick={() => setNumber(number + 1)}>Increase</button>
-            <button onClick={reset}>reset</button>
-            <Counter count={number}/>
-            <div className="boxes">{box}</div>
-        </div>
-    );
-}
+        return (
+            <div className="App">
+                <button onClick={() => setNumber(number + 1)}>Increase</button>
+                <button onClick={reset}>reset</button>
+                <Counter count={number}/>
+                <div className="boxes">{box}</div>
+            </div>
+        );
+    }
 
 export default App;

@@ -8,7 +8,7 @@ function App() {
         "#0d0d8c",
         "#a41313",
         "#064826",
-        "#342a6e"
+        "#996e00"
     ];
 
     const [number, setNumber] = React.useState(0);
@@ -36,7 +36,7 @@ function App() {
             return randomColor[rand];
         }
         return color;
-    }, [color])
+    }, [color, boxes])
 
         React.useEffect(() => {
             if (number % 2 === 0) {

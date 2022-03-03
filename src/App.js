@@ -36,7 +36,7 @@ function App() {
             return randomColor[rand];
         }
         return color;
-    }, [color, boxes])
+    }, [color])
 
         React.useEffect(() => {
             if (number % 2 === 0) {
